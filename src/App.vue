@@ -1,19 +1,28 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios'
+import { onMounted, ref } from "vue";
+
+const data = ref({})
+onMounted(async () => {
+    const result = await axios.get('http://localhost:8080/api/items');
+    data.value = result.data;
+})
+const test = () => {
+    console.log('test')
+    axios.post('http://localhost:8080/api/items', {
+        title: 'test',
+        description: 'test',
+        ingredients: [],
+    })
+}
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+        {{ data }}
     </div>
   </header>
 
