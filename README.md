@@ -1,6 +1,6 @@
 # menu-select
 
-This template should help get you started developing with Vue 3 in Vite.
+This Project is to make my life easier whenever I want to either host friends or if I am just making dinner for the week. This will be a simple site that can send and recieve data of a list of recipes in a mongo database. A person will select from a list of items of what they want to eat and it will send to me the information of what I need to buy for groceries
 
 ## Recommended IDE Setup
 
