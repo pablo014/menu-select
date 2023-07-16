@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import axios from 'axios'
 import { onMounted, ref } from "vue";
+import MenuItem from "@/components/MenuItem.vue";
 
 const data = ref({})
 onMounted(async () => {
@@ -10,23 +11,19 @@ onMounted(async () => {
     data.value = result.data;
 })
 const test = () => {
-    console.log('test')
     axios.post('http://localhost:8080/api/items', {
         title: 'test',
-        description: 'test',
-        ingredients: [],
+        description: 'String',
+        ingredients: ['test'],
     })
+}
+const deleteAll = () => {
+    axios.delete('http://localhost:8080/api/items');
 }
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-        {{ data }}
-    </div>
-  </header>
-
-  <RouterView />
+  <MenuItem v-for="item in data" :item="item" />
 </template>
 
 <style scoped>
