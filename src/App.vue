@@ -1,29 +1,9 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import axios from 'axios'
-import { onMounted, ref } from "vue";
-import MenuItem from "@/components/MenuItem.vue";
-
-const data = ref({})
-onMounted(async () => {
-    const result = await axios.get('http://localhost:8080/api/items');
-    data.value = result.data;
-})
-const test = () => {
-    axios.post('http://localhost:8080/api/items', {
-        title: 'test',
-        description: 'String',
-        ingredients: ['test'],
-    })
-}
-const deleteAll = () => {
-    axios.delete('http://localhost:8080/api/items');
-}
 </script>
 
 <template>
-  <MenuItem v-for="item in data" :item="item" />
+  <RouterView></RouterView>
 </template>
 
 <style scoped>

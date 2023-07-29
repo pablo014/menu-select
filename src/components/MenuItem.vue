@@ -4,7 +4,7 @@
             <h3 class="item-name">{{ item.title }}</h3>
             <p class="item-description">{{ item.description }}</p>
             <ul class="item-ingredients">
-                <li v-for="ingredient in item.ingredients" :key="ingredient">{{ ingredient }}</li>
+                <li v-for="ingredient in ingredients" :key="ingredient">{{ ingredient }}</li>
             </ul>
         </div>
     </div>
@@ -18,7 +18,13 @@ export default {
             type: Object,
             required: true,
         }
-    }
+    },
+    data(props) {
+        const ingredients = JSON.parse(props.item.ingredients);
+        return {
+            ingredients,
+        }
+    },
 }
 </script>
 
